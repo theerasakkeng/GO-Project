@@ -1,0 +1,8 @@
+app:
+  port: 8080
+db:
+  driver: sqlserver
+  username: sa
+  password: Keng1234
+  host: localhost
+  database: TestDB
