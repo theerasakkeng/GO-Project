@@ -2,6 +2,7 @@ package db
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/spf13/viper"
 	"gorm.io/driver/sqlserver"
@@ -31,5 +32,14 @@ func InitDB() (db *gorm.DB, err error) {
 	if err != nil {
 		return nil, err
 	}
+
+	sqlDB, err := db.DB()
+	if err != nil {
+		panic(err)
+	}
+	sqlDB.SetConnMaxLifetime(3 * time.Minute)
+	sqlDB.SetMaxOpenConns(10)
+	sqlDB.SetMaxIdleConns(10)
+
 	return db, err
 }
