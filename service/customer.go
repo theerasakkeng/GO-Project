@@ -1,5 +1,7 @@
 package service
 
+import "project-study/repository"
+
 type CustomerResponse struct {
 	Customer_Id int     `json:"customer_id"`
 	First_Name  string  `json:"first_name"`
@@ -10,4 +12,5 @@ type CustomerResponse struct {
 type CustomerService interface {
 	GetCustomerList() ([]CustomerResponse, error)
 	GetCustomerDetail(string) (*CustomerResponse, error)
+	InsertCustomer(repository.CustomerRequest) (string, error)
 }

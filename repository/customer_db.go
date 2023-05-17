@@ -28,3 +28,11 @@ func (r customerRepositoryDB) GetById(id string) (*Customer, error) {
 	}
 	return &customer, nil
 }
+
+func (r customerRepositoryDB) PostCustomer(customer CustomerRequest) (string, error) {
+	result := r.db.Create(&customer)
+	if result.Error != nil {
+		return "error", result.Error
+	}
+	return "success", nil
+}

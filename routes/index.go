@@ -23,5 +23,6 @@ func InitRoute() {
 	{
 		customerRoutes.GET("/getcustomers", customerHandler.GetCustomerList)
 		customerRoutes.GET("/getcustomerdetail", customerHandler.GetCustomerDetail)
+		customerRoutes.POST("/postcustomer", customerHandler.InsertCustomer)
 	}
 }

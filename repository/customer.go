@@ -12,9 +12,21 @@ type Customer struct {
 	Zip_Code    string  `db:"zip_code"`
 }
 
+type CustomerRequest struct {
+	First_Name string `db:"first_name"`
+	Last_Name  string `db:"last_name"`
+	Phone      string `db:"phone"`
+	Email      string `db:"email"`
+	Street     string `db:"street"`
+	City       string `db:"city"`
+	State      string `db:"state"`
+	Zip_Code   string `db:"zip_code"`
+}
+
 type CustomerRepository interface {
 	GetAll() ([]Customer, error)
 	GetById(string) (*Customer, error)
+	PostCustomer(CustomerRequest) (string, error)
 }
 
 type Tabler interface {
@@ -22,5 +34,9 @@ type Tabler interface {
 }
 
 func (Customer) TableName() string {
+	return "sales.customers"
+}
+
+func (CustomerRequest) TableName() string {
 	return "sales.customers"
 }
