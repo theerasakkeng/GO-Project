@@ -26,7 +26,7 @@ type CustomerRequest struct {
 type CustomerRepository interface {
 	GetAll() ([]Customer, error)
 	GetById(string) (*Customer, error)
-	PostCustomer(CustomerRequest) (string, error)
+	PostCustomer(CustomerRequest) (*CustomerRequest, error)
 }
 
 type Tabler interface {

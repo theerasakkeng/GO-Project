@@ -12,5 +12,5 @@ type CustomerResponse struct {
 type CustomerService interface {
 	GetCustomerList() ([]CustomerResponse, error)
 	GetCustomerDetail(string) (*CustomerResponse, error)
-	InsertCustomer(repository.CustomerRequest) (string, error)
+	InsertCustomer(repository.CustomerRequest) (*repository.CustomerRequest, error)
 }

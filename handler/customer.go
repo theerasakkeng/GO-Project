@@ -44,11 +44,11 @@ func (h customerHandler) InsertCustomer(c *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	text, err := h.custSrv.InsertCustomer(customer)
+	res, err := h.custSrv.InsertCustomer(customer)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, nil)
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"data": text,
+		"data": res,
 	})
 }

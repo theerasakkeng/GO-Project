@@ -42,10 +42,11 @@ func (s customerService) GetCustomerDetail(id string) (*CustomerResponse, error)
 	return &custResponse, nil
 }
 
-func (s customerService) InsertCustomer(customerreq repository.CustomerRequest) (string, error) {
-	_, err := s.custRepo.PostCustomer(customerreq)
+func (s customerService) InsertCustomer(customer repository.CustomerRequest) (*repository.CustomerRequest, error) {
+	customerReq := customer
+	res, err := s.custRepo.PostCustomer(customerReq)
 	if err != nil {
-		return "error", err
+		return nil, err
 	}
-	return "success", nil
+	return res, nil
 }
