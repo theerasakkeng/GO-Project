@@ -13,4 +13,6 @@ type CustomerService interface {
 	GetCustomerList() ([]CustomerResponse, error)
 	GetCustomerDetail(string) (*CustomerResponse, error)
 	InsertCustomer(repository.CustomerRequest) (*repository.CustomerRequest, error)
+	EditCustomer(repository.CustomerRequest, string) (*repository.CustomerRequest, error)
+	DeleteCustomer(int) (string, error)
 }

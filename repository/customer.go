@@ -27,6 +27,8 @@ type CustomerRepository interface {
 	GetAll() ([]Customer, error)
 	GetById(string) (*Customer, error)
 	PostCustomer(CustomerRequest) (*CustomerRequest, error)
+	UpdateCustomer(CustomerRequest, string) (*CustomerRequest, error)
+	DeleteCustomerById(int) (string, error)
 }
 
 type Tabler interface {

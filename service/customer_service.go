@@ -50,3 +50,20 @@ func (s customerService) InsertCustomer(customer repository.CustomerRequest) (*r
 	}
 	return res, nil
 }
+
+func (s customerService) EditCustomer(customer repository.CustomerRequest, id string) (*repository.CustomerRequest, error) {
+	customerReq := customer
+	res, err := s.custRepo.UpdateCustomer(customerReq, id)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+func (s customerService) DeleteCustomer(id int) (string, error) {
+	res, err := s.custRepo.DeleteCustomerById(id)
+	if err != nil {
+		return res, err
+	}
+	return res, nil
+}

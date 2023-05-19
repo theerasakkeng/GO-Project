@@ -37,3 +37,21 @@ func (r customerRepositoryDB) PostCustomer(customer CustomerRequest) (*CustomerR
 	}
 	return &customerReq, nil
 }
+
+func (r customerRepositoryDB) UpdateCustomer(customer CustomerRequest, id string) (*CustomerRequest, error) {
+	var customerReq = customer
+	result := r.db.Where("customer_id = ?", id).Save(&customerReq)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &customerReq, nil
+}
+
+func (r customerRepositoryDB) DeleteCustomerById(id int) (string, error) {
+	var customerReq = Customer{}
+	result := r.db.Where("customer_id = ?", id).Delete(&customerReq)
+	if result.Error != nil {
+		return "error", result.Error
+	}
+	return "success", nil
+}
